@@ -1,0 +1,37 @@
+after we succefully configured the aws 
+
+1) we need deploy our kops cluster
+kops create cluster --name=zs-devops-01.site --state=s3://zs-devops-01.site --zones=us-east-1a --node-count=2 --node-size=t2.micro --master-size=t2.small --master-volume-size 15 --node-volume-size 20 --dns-zone=zs-devops-01.site --yes
+note:  with out -- yes our cluster will not deploy but it provides the edit operations
+
+thise are the edit operations[
+    kops get ig --name zs-devops-01.site --state s3://zs-devops-01.site
+kops edit ig --name=zs-devops-01.site maaster-us-east-1a --state s3:// zs-devops-01.site
+
+kops edit ig --name=zs-devops-01.site nodes --state s3://zs-devops-01.site
+
+
+kops update cluster --name zs-devops-01.site --yes --state s3://zs-devops-01.site
+
+kops rolling-update cluster --name  zs-devops-01.site --yes --state s3://zs-devops-01.site
+
+
+kops delete cluster --name zs-devops-01.site --yes --state s3://zs-devops-01.site
+]
+
+
+after creating  cluster we wont be delted by using commands
+we need to prepare the some type of scripts 
+ex [k8script.sh]
+k8s.sh script
+kops edit ig --name=zs-devops-01.site master-us-east-1a --state s3://zs-devops-01.site && kops edit ig --name=zs-devops-01.site nodes --state s3://zs-devops-01.site && kops update cluster --name zs-devops-01.site --yes --state s3://zs-devops-01.site
+ thise script help to stop the or deleteing nodes and master wit out fails 
+ whenevr we want  deploy again our cluset just run the script and edit the  master nodes & nodes 
+ which type u want and the how many master required  and nodes our app 
+
+ [some of the export commands are also hepls our works easy ]
+ export NAME=zs-devops-01.site
+export KOPS_STATE_STORE=s3://zs-devops-01.site
+alias ku='kubectl'
+in the file .bashrc 
+

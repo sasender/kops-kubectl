@@ -1,0 +1,40 @@
+kops operations install 
+
+[get link from github.com/kops]
+
+https://github.com/kubernetes/kops/releases/download/v1.18.0-beta.1/kops-linux-amd64
+
+
+[kubectl install]
+{thise get from kubernetes page}
+
+download link
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+Download the kubectl checksum file:
+
+2) curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+
+{Validate the kubectl binary against the checksum file:} 
+
+3)echo "$(<kubectl.sha256) kubectl" | sha256sum --check
+
+then after genrate ssh key becuse mostly kubernetes deals with ssh keys there is no authorized certicates
+4)ssh-keygen
+
+we need to configure aws  but we must have the aws client 
+before download the aws cli we shold download the  apt install unzip -y 
+
+5) apt update && apt install unzip -y
+
+6)aws cli 
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+we will check the aws configuration with aws user credentials 
+ 
+
+ [ aws s3 ls ] thise command helps the aws configuration properly connected or not 
+  
