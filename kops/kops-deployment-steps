@@ -24,10 +24,12 @@ after creating  cluster we wont be delted by using commands
 we need to prepare the some type of scripts 
 ex [k8script.sh]
 k8s.sh script
-kops edit ig --name=zs-devops-01.site master-us-east-1a --state s3://zs-devops-01.site && kops edit ig --name=zs-devops-01.site nodes --state s3://zs-devops-01.site && kops update cluster --name zs-devops-01.site --yes --state s3://zs-devops-01.site
+kops edit ig --name=sasender.xyz master-us-east-1a --state s3://sasender.xyz && kops edit ig --name=sasender.xyz nodes-us-east-1a --state s3://sasender.xyz && kops update cluster --name sasender.xyz --yes --state s3://sasender.xyz
  thise script help to stop the or deleteing nodes and master wit out fails 
  whenevr we want  deploy again our cluset just run the script and edit the  master nodes & nodes 
- which type u want and the how many master required  and nodes our app 
+ which type u want and the how many master required  and nodes our app
+ 
+ kops edit ig --name=sasender.xyz master-us-east-1a --state s3://sasender.xyz && kops edit ig --name=sasender.xyz nodes-us-east-1a --state s3://sasender.xyz && kops update cluster --name sasender.xyz --yes --state s3://sasender.xyz
 
  [some of the export commands are also hepls our works easy ]
  export NAME=zs-devops-01.site
@@ -39,4 +41,19 @@ in the file .bashrc
 refernse links:
 https://www.fosstechnix.com/setup-kubernetes-on-aws-using-kops/
 
+
+kops: creating cluster
+kops create cluster --name=sasender.xyz --state=s3://sasender.xyz  --zones=us-east-1a --node-count=2 --node-size=t2.micro --master-size=t2.small --master-volume-size 15 --node-volume-size 20 --dns-zone=sasender.xyz --yes
+
+kops update cluster --name sasender.xyz --yes
+
+kops update cluster --name sasender.xyz --yes --admin
+
+kops update cluster --name sasender.xyz --yes --state s3://sasender.xyz
+
+ KOPS_STATE_STORE=s3://sasender.xyz
+ export KOPS_STATE_STORE=s3://.sasender.xyz
+ 
+ ssh -i ~/.ssh/id_rsa ubuntu@api.sasender.xyz
+ 
 
