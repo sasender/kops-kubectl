@@ -1,3 +1,9 @@
+prerqusites of kops installation:
+1: kops install tool
+2: kubectl commnd utility
+3: aws cli utility
+
+
 kops operations install 
 
 [get link from github.com/kops]
