@@ -35,3 +35,8 @@ export KOPS_STATE_STORE=s3://zs-devops-01.site
 alias ku='kubectl'
 in the file .bashrc 
 
+
+refernse links:
+https://www.fosstechnix.com/setup-kubernetes-on-aws-using-kops/
+
+
